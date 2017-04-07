@@ -1,0 +1,30 @@
+acme_bundle_scalar_all:
+    path:     /scalar
+    defaults: { _controller: AcmeBundle:Scalar:all, _format: 'json' }
+    methods:  [GET]
+
+acme_bundle_scalar_create:
+    path:     /scalar
+    defaults: { _controller: AcmeBundle:Scalar:create, _format: 'json' }
+    methods:  [POST]
+
+acme_bundle_complex_all:
+    path:     /complex
+    defaults: { _controller: AcmeBundle:Complex:all, _format: 'json' }
+    methods:  [GET]
+
+acme_bundle_complex_create:
+    path:     /complex
+    defaults: { _controller: AcmeBundle:Complex:create, _format: 'json' }
+    methods:  [POST]
+
+acme_bundle_custom_all:
+    path:     /custom
+    defaults: { _controller: AcmeBundle:Custom:all, _format: 'json' }
+    methods:  [GET]
+
+acme_bundle_custom_create:
+    path:     /custom
+    defaults: { _controller: AcmeBundle:Custom:create, _format: 'json' }
+    methods:  [POST]
+

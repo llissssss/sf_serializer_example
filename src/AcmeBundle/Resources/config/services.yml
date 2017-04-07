@@ -1,0 +1,45 @@
+services:
+
+    # 1- Serializer component
+    symfony.serializer.json_encoder:
+        class: Symfony\Component\Serializer\Encoder\JsonEncoder
+
+    symfony.serializer.camel_case_to_snake_case_name_converter:
+        class: Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
+
+    symfony.serializer.date_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\DateTimeNormalizer
+
+    symfony.serializer.reflection_extractor:
+        class: Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor
+
+    acme_bundle.serialization.get_set_method_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+        arguments: [null, "@symfony.serializer.camel_case_to_snake_case_name_converter", "@symfony.serializer.reflection_extractor"]
+
+    # Custom Normalizers
+    acme_bundle.serialization.client_normalizer:
+        class: AcmeBundle\Service\Serialization\CustomNormalizer
+        arguments: ["@acme_bundle.factory.client"]
+
+    # Repositories
+    acme_bundle.repository.client:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: ['AcmeBundle\Entity\ScalarValues']
+
+    # Factories
+    acme_bundle.factory.client:
+        class: AcmeBundle\Service\Factory\ClientFactory
+        arguments: ['@acme_bundle.repository.client']
+
+    # Serializers
+    acme_bundle.serialization.serializer:
+        class: Symfony\Component\Serializer\Serializer
+        arguments:
+          -
+            - "@symfony.serializer.date_normalizer"
+            - "@acme_bundle.serialization.client_normalizer"
+            - "@acme_bundle.serialization.get_set_method_normalizer"
+          -
+            - "@symfony.serializer.json_encoder"

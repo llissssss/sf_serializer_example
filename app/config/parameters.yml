@@ -1,0 +1,9 @@
+# This file is auto-generated during the composer install
+parameters:
+
+    database.host: localhost
+    database.driver: pdo_mysql
+    database.port: 3306
+    database.name: sf_serializer
+    database.user: sf_serializer
+    database.password: sf_serializer

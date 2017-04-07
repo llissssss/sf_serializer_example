@@ -1,0 +1,3 @@
+data_transfer:
+    resource: "@AcmeBundle/Resources/config/routing.yml"
+    prefix:   /data-transfer
