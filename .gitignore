@@ -13,4 +13,4 @@
 /vendor/
 /web/bundles/
 .idea
-app/config/parameters.yml
+/app/config/parameters.yml

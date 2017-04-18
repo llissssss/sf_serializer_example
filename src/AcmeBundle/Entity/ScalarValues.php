@@ -37,7 +37,7 @@ class ScalarValues
     /**
      * @var bool
      *
-     * @ORM\Column(type="bool")
+     * @ORM\Column(type="boolean")
      */
     protected $boolean;
 

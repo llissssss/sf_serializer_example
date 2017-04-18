@@ -14,7 +14,3 @@ security:
 
         main:
             anonymous: ~
-
-    access_control:
-        - { path: ^/data-transfer, roles: IS_AUTHENTICATED_ANONYMOUSLY, ips: "%ky2_statistics.security.whitelisted_ips%" }
-        - { path: ^/data-transfer, roles: ROLE_NO_ACCESS }
